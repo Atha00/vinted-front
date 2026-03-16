@@ -39,6 +39,10 @@ const Home = ({ title, priceMin, priceMax }) => {
       }
     };
     fetchData();
+    // sera déclenché à la destruction du composant :
+    // return () => {
+    //   clearInterval()
+    // }
   }, [title, priceMin, priceMax]);
 
   return (

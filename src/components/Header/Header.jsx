@@ -33,24 +33,26 @@ const Header = ({
             />
             {/* // votre icone de loupe */}
           </div>
-          <input
-            type="number"
-            name="priceMin"
-            id="priceMin"
-            value={priceMin}
-            onChange={(event) => {
-              setPriceMin(event.target.value);
-            }}
-          />
-          <input
-            type="number"
-            name="priceMax"
-            id="priceMax"
-            value={priceMax}
-            onChange={(event) => {
-              setPriceMax(event.target.value);
-            }}
-          />
+          <div className="price-inputs">
+            <input
+              type="number"
+              name="priceMin"
+              id="priceMin"
+              value={priceMin}
+              onChange={(event) => {
+                setPriceMin(event.target.value);
+              }}
+            />
+            <input
+              type="number"
+              name="priceMax"
+              id="priceMax"
+              value={priceMax}
+              onChange={(event) => {
+                setPriceMax(event.target.value);
+              }}
+            />
+          </div>
         </div>
 
         {userToken ? (

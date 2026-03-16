@@ -27,3 +27,11 @@ header .filters {
 
   flex-direction: column;
 }
+
+header .filters .price-inputs {
+  display: flex;
+  gap: 10px;
+}
+header .filters .price-inputs input {
+  width: 80px;
+}
