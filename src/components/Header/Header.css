@@ -22,3 +22,8 @@ header img {
 header input {
   width: 630px;
 }
+header .filters {
+  display: flex;
+
+  flex-direction: column;
+}

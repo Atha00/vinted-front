@@ -10,6 +10,9 @@ import Cookies from "js-cookie";
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
+  const [title, setTitle] = useState("");
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(1000);
 
   const handleToken = (token) => {
     if (token) {
@@ -23,9 +26,23 @@ function App() {
 
   return (
     <Router>
-      <Header handleToken={handleToken} setIsConnected={setIsConnected} />
+      <Header
+        handleToken={handleToken}
+        setIsConnected={setIsConnected}
+        title={title}
+        setTitle={setTitle}
+        priceMin={priceMin}
+        priceMax={priceMax}
+        setPriceMin={setPriceMin}
+        setPriceMax={setPriceMax}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home title={title} priceMin={priceMin} priceMax={priceMax} />
+          }
+        />
         <Route path="/offers/:id" element={<Offer />} />
         <Route
           path="/signup"

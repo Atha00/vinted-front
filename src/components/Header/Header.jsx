@@ -3,7 +3,16 @@ import logo from "../../assets/images/logo.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Header = ({ handleToken, setIsConnected }) => {
+const Header = ({
+  handleToken,
+  setIsConnected,
+  title,
+  setTitle,
+  priceMax,
+  priceMin,
+  setPriceMax,
+  setPriceMin,
+}) => {
   const userToken = Cookies.get("userToken");
   return (
     <header>
@@ -11,10 +20,39 @@ const Header = ({ handleToken, setIsConnected }) => {
         <Link to="/">
           <img src={logo} alt="logo vinted" />
         </Link>
-        <div>
-          <input type="text" />
-          {/* // votre icone de loupe */}
+        <div className="filters">
+          <div>
+            <input
+              type="text"
+              placeholder="Recherche des articles"
+              value={title}
+              id="title"
+              onChange={(event) => {
+                setTitle(event.target.value);
+              }}
+            />
+            {/* // votre icone de loupe */}
+          </div>
+          <input
+            type="number"
+            name="priceMin"
+            id="priceMin"
+            value={priceMin}
+            onChange={(event) => {
+              setPriceMin(event.target.value);
+            }}
+          />
+          <input
+            type="number"
+            name="priceMax"
+            id="priceMax"
+            value={priceMax}
+            onChange={(event) => {
+              setPriceMax(event.target.value);
+            }}
+          />
         </div>
+
         {userToken ? (
           <div>
             <button
