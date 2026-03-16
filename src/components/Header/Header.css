@@ -1,0 +1,24 @@
+header {
+  height: 120px;
+}
+
+header .container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-shrink: 0;
+  height: 100%;
+  justify-content: space-between;
+}
+
+header .container > div {
+  display: flex;
+  gap: 20px;
+}
+
+header img {
+  width: 80px;
+}
+header input {
+  width: 630px;
+}
