@@ -92,10 +92,14 @@ const Home = ({ title, priceMin, priceMax }) => {
                 <Link to={"/offers/" + element._id} key={element._id}>
                   <article>
                     <div className="owner-profile">
-                      <img
-                        src={element.owner.account.avatar.secure_url}
-                        alt="portrait de l'ouner"
-                      />
+                      {/* petite sécurisation au cas où l'utilisateur n'a pas d'avatar : */}
+                      {element.owner.account.avatar && (
+                        <img
+                          src={element.owner.account.avatar.secure_url}
+                          alt="portrait de l'ouner"
+                        />
+                      )}
+
                       <p>{element.owner.account.username}</p>
                     </div>
                     <img

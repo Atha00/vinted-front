@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import Cookies from "js-cookie";
+import Publish from "./pages/Publish/Publish";
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
@@ -64,6 +65,7 @@ function App() {
             />
           }
         />
+        <Route path="/publish" element={<Publish />} />
         <Route
           path="*"
           element={

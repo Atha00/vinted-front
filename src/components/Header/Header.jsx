@@ -1,6 +1,6 @@
 import "./Header.css";
 import logo from "../../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Header = ({
@@ -13,6 +13,8 @@ const Header = ({
   setPriceMax,
   setPriceMin,
 }) => {
+  const location = useLocation();
+  console.log("ici =>", location);
   const userToken = Cookies.get("userToken");
   return (
     <header>
@@ -33,26 +35,28 @@ const Header = ({
             />
             {/* // votre icone de loupe */}
           </div>
-          <div className="price-inputs">
-            <input
-              type="number"
-              name="priceMin"
-              id="priceMin"
-              value={priceMin}
-              onChange={(event) => {
-                setPriceMin(event.target.value);
-              }}
-            />
-            <input
-              type="number"
-              name="priceMax"
-              id="priceMax"
-              value={priceMax}
-              onChange={(event) => {
-                setPriceMax(event.target.value);
-              }}
-            />
-          </div>
+          {location.pathname === "/" ? (
+            <div className="price-inputs">
+              <input
+                type="number"
+                name="priceMin"
+                id="priceMin"
+                value={priceMin}
+                onChange={(event) => {
+                  setPriceMin(event.target.value);
+                }}
+              />
+              <input
+                type="number"
+                name="priceMax"
+                id="priceMax"
+                value={priceMax}
+                onChange={(event) => {
+                  setPriceMax(event.target.value);
+                }}
+              />
+            </div>
+          ) : null}
         </div>
 
         {userToken ? (
@@ -78,7 +82,9 @@ const Header = ({
             </Link>
           </div>
         )}
-        <button>Vends tes articles</button>
+        <Link to="/publish">
+          <button>Vends tes articles</button>
+        </Link>
       </div>
     </header>
   );

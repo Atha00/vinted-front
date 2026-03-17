@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -6,6 +6,9 @@ import "./Login.css";
 
 const Login = ({ setIsConnected }) => {
   const navigate = useNavigate();
+  // useLocation permet de récupérer les informations de navigation de l'utilisateur :
+  const location = useLocation();
+  // console.log(location); // {pathname: '/login', search: '', hash: '', state: { from: "/publish" }, key: 'ud8w1n4w', …}
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +37,11 @@ const Login = ({ setIsConnected }) => {
 
                 // optimisation via une fonction :
                 // handleToken(response.data.token);
-                navigate("/");
+                if (location.state) {
+                  navigate(location.state.from);
+                } else {
+                  navigate("/");
+                }
               }
             } catch (error) {
               if (error.response) {
