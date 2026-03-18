@@ -33,7 +33,7 @@ const Login = ({ setIsConnected }) => {
               if (response.data.token) {
                 Cookies.set("userToken", response.data.token);
                 // on change le state de connection (pour l'affichage dans le header) :
-                setIsConnected(true);
+                setIsConnected(response.data.token);
 
                 // optimisation via une fonction :
                 // handleToken(response.data.token);

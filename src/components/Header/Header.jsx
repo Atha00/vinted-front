@@ -12,10 +12,11 @@ const Header = ({
   priceMin,
   setPriceMax,
   setPriceMin,
+  isConnected,
 }) => {
   const location = useLocation();
-  console.log("ici =>", location);
-  const userToken = Cookies.get("userToken");
+  // console.log("ici =>", location);
+
   return (
     <header>
       <div className="container">
@@ -59,14 +60,14 @@ const Header = ({
           ) : null}
         </div>
 
-        {userToken ? (
+        {isConnected ? (
           <div>
             <button
               onClick={() => {
                 // optimisation via une fonction :
                 // handleToken(null);
                 Cookies.remove("userToken");
-                setIsConnected(false);
+                setIsConnected(null);
               }}
             >
               Se déconnecter

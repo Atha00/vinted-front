@@ -49,7 +49,7 @@ const Signup = ({ handleToken, setIsConnected }) => {
                 // on le stockera dans les cookies
                 Cookies.set("userToken", response.data.token);
                 // on change le state de connection (pour l'affichage dans le header) :
-                setIsConnected(true);
+                setIsConnected(response.data.token);
 
                 // optimisation en une seule fonction :
                 // handleToken(response.data.token);

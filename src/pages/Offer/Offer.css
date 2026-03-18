@@ -4,6 +4,12 @@
   padding-top: 30px;
 }
 
+.offer h1 {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 .offer section {
   display: flex;
   justify-content: space-around;

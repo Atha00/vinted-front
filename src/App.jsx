@@ -1,16 +1,19 @@
 import "./App.css";
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Cookies from "js-cookie";
 import Home from "./pages/Home/Home";
 import Offer from "./pages/Offer/Offer";
 import Header from "./components/Header/Header";
 import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
-import Cookies from "js-cookie";
 import Publish from "./pages/Publish/Publish";
+import Payment from "./pages/Payment/Payment";
 
 function App() {
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(
+    Cookies.get("userToken") || null,
+  );
   const [title, setTitle] = useState("");
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(1000);
@@ -30,6 +33,7 @@ function App() {
       <Header
         handleToken={handleToken}
         setIsConnected={setIsConnected}
+        isConnected={isConnected}
         title={title}
         setTitle={setTitle}
         priceMin={priceMin}
@@ -66,6 +70,7 @@ function App() {
           }
         />
         <Route path="/publish" element={<Publish />} />
+        <Route path="/payment" element={<Payment />} />
         <Route
           path="*"
           element={

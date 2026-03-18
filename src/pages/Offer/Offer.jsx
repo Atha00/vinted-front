@@ -1,5 +1,5 @@
 import "./Offer.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -17,7 +17,7 @@ const Offer = () => {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offer/" + id,
         );
-        // console.log("ici =>", response.data);
+        console.log("ici details de l'offre =>", response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -55,7 +55,17 @@ const Offer = () => {
                 })}
               </div>
 
-              <button>Acheter</button>
+              <h1>{data.product_name}</h1>
+              <Link
+                to="/payment"
+                state={{
+                  title: data.product_name,
+                  price: data.product_price,
+                  id: data._id,
+                }}
+              >
+                <button>Acheter</button>
+              </Link>
             </aside>
           </section>
         )}
